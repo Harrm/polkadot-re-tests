@@ -12,3 +12,4 @@
 [submodule "implementations/cpp/kagome"]
 	path = implementations/cpp/kagome
 	url = https://github.com/soramitsu/kagome
+	branch = experiment/soramitsu-hunter

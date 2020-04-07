@@ -1,8 +1,8 @@
 module PdreApiTestFixtures
 	const cli_testers = [
-	  "build/bin/usr/local/bin/rust_tester"
-	  # TODO "build/bin/usr/local/bin/go_tester"
-	  # TODO "build/bin/usr/local/bin/cpp_tester"
+#	  "build/bin/usr/local/bin/rust_tester"
+#	  TODO "build/bin/usr/local/bin/go_tester"
+	  "build/bin/usr/local/bin/kagome_tester"
 	]
 
 	# Input: data

@@ -22,11 +22,11 @@ function (execute_vital_process)
 endfunction()
 
 execute_vital_process(
-	COMMAND cmake -DCMAKE_INSTALL_PREFIX=${KAGOME_BUILD_DIR}/install -B ${KAGOME_BUILD_DIR}
+	COMMAND ${CMAKE_COMMAND} -DCMAKE_INSTALL_PREFIX=${KAGOME_BUILD_DIR}/install -B ${KAGOME_BUILD_DIR}
     DESCRIPTION "CMake files generation")
-execute_vital_process(COMMAND cmake --build ${KAGOME_BUILD_DIR} 
+execute_vital_process(COMMAND ${CMAKE_COMMAND} --build ${KAGOME_BUILD_DIR}
     DESCRIPTION build)
-execute_vital_process(COMMAND cmake --build ${KAGOME_BUILD_DIR} -- install
+execute_vital_process(COMMAND ${CMAKE_COMMAND} --build ${KAGOME_BUILD_DIR} -- install
     DESCRIPTION install)
 
 add_executable(kagome_tester

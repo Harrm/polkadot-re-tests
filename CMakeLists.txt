@@ -12,8 +12,8 @@ set(CMAKE_TOOLCHAIN_FILE
 include(cmake/HunterGate.cmake)
 
 HunterGate(
-    URL "https://github.com/ruslo/hunter/archive/v0.23.206.tar.gz"
-    SHA1 "9cb4184e563ad45dbafb6755c0d588e5574838d3"
+    URL "https://github.com/soramitsu/soramitsu-hunter/archive/e10a6614f59308033e125a3cb6e136bc28465546.tar.gz"
+    SHA1 76e4c70323bdd1beebe1464d5de05f97c111d35a
     FILEPATH ${CMAKE_CURRENT_LIST_DIR}/cmake/HunterConfig.cmake
 )
 

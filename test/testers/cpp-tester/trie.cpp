@@ -10,6 +10,8 @@
 #include <boost/program_options.hpp>
 #include <kagome/storage/in_memory/in_memory_storage.hpp>
 #include <kagome/storage/trie/impl/polkadot_trie_db.hpp>
+#include <kagome/storage/trie/impl/trie_db_backend_impl.hpp>
+#include <kagome/blockchain/impl/storage_util.hpp>
 #include <spdlog/sinks/stdout_sinks.h>
 #include <yaml-cpp/yaml.h>
 
@@ -98,9 +100,11 @@ parseYamlStateFile(const std::string &filename, bool keys_in_hex) {
 }
 
 void processTrieCommand(const TrieCommandArgs &args) {
-  auto db = std::make_unique<kagome::storage::InMemoryStorage>();
+  auto db = std::make_shared<kagome::storage::InMemoryStorage>();
 
-  kagome::storage::trie::PolkadotTrieDb trie(std::move(db));
+  auto backend = std::make_shared<kagome::storage::trie::TrieDbBackendImpl>(db, kagome::common::Buffer{kagome::blockchain::prefix::TRIE_NODE});
+
+  auto trie = *kagome::storage::trie::PolkadotTrieDb::createEmpty(backend);
 
   SubcommandRouter<std::vector<Buffer>, std::vector<Buffer>> router;
   router.addSubcommand("insert-and-delete", [&trie, &args](
